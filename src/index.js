@@ -10,6 +10,7 @@ import reducers from './reducer'
 import Login from './container/login/login'
 import Register from './container/register/register'
 import AuthRoute  from './component/authroute/authroute'
+import BossInfo from './container/bossinfo/bossinfo'
 
 import './index.css'
 
@@ -18,9 +19,9 @@ const store = createStore(reducers, compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ))
 
-function Boss () {
-  return <h2>Boss</h2>
-}
+// function Boss () {
+//   return <h2>Boss</h2>
+// }
 
 ReactDom.render(
   (<Provider store={store}>
@@ -28,7 +29,7 @@ ReactDom.render(
       <AuthRoute></AuthRoute>
       <Route path='/login' component={Login}></Route>
       <Route path='/register' component={Register}></Route>
-      <Route path='/boss' component={Boss}></Route>
+      <Route path='/bossinfo' component={BossInfo}></Route>
     </BrowserRouter>
   </Provider>),
   document.getElementById('root')
