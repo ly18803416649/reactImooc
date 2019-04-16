@@ -3,6 +3,7 @@ const utils = require('utility')
 const Router = express.Router()
 const models = require('./model')
 const User = models.getModel('user')
+const Chat = models.getModel('chat')
 
 const _filter = {'pwd': 0, '__v': 0}
 
@@ -10,6 +11,20 @@ function md5Pwd (pwd) {
   const  salt = 'Liuyangxuahfoiaof'
   return utils.md5(utils.md5((pwd + salt)))
 }
+
+// Chat.remove({}, function (err, doc) {
+//
+// })
+
+Router.get('/getmsglist', function (req, res) {
+  const user = req.cookies.user
+  // '$or': [{from: user, to: user}]
+  Chat.find({}, function (err, doc) {
+    if (!err) {
+      return res.json({code: 0, msgs: doc})
+    }
+  })
+})
 
 Router.get('/list', function (req, res) {
   // User.remove({},function (err, doc) {

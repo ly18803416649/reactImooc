@@ -9,7 +9,7 @@ import UserCard from '../usercard/usercard'
   { getUserList }
 )
 
-class Boss extends React.Component{
+class Genius extends React.Component{
   constructor (props) {
     super(props);
     this.state = {
@@ -23,12 +23,13 @@ class Boss extends React.Component{
     //       this.setState({data: res.data.data})
     //     }
     //   })
-    this.props.getUserList('genuis')
+    this.props.getUserList('boss')
   }
   render () {
     console.log(this.state);
+
     return <UserCard userList={this.props.userList} />
   }
 }
 
-export default Boss
+export default Genius

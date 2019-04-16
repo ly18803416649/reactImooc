@@ -4,19 +4,21 @@ import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 import NavLinkBar from '../navlink/navlink'
 import Boss from '../boss/boss'
+import Genius from '../genius/genius'
+import User from '../user/user'
 
 // function Boss() {
 //   return <h2>Boss</h2>
 // }
-function Genius() {
-  return <h2>Genius</h2>
-}
+// function Genius() {
+//   return <h2>Genius</h2>
+// }
 function Msg() {
   return <h2>Msg</h2>
 }
-function User() {
-  return <h2>User</h2>
-}
+// function User() {
+//   return <h2>User</h2>
+// }
 
 @connect(
   state => state
