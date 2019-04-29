@@ -17,12 +17,18 @@ function md5Pwd (pwd) {
 // })
 
 Router.get('/getmsglist', function (req, res) {
-  const user = req.cookies.user
+  const user = req.cookies.userid
   // '$or': [{from: user, to: user}]
-  Chat.find({}, function (err, doc) {
-    if (!err) {
-      return res.json({code: 0, msgs: doc})
-    }
+  User.find({}, function (err, userdoc) {
+    let users = {}
+    userdoc.forEach(v => {
+      users[v._id] = {name: v.user, avatar: v.avatar}
+    })
+    Chat.find({'$or': [{from: user}, {to: user}]}, function (err, doc) {
+      if (!err) {
+        return res.json({code: 0, msgs: doc, users: users})
+      }
+    })
   })
 })
 
@@ -31,10 +37,8 @@ Router.get('/list', function (req, res) {
   //
   // })
   const { type } = req.query
-  console.log(req.query)
   User.find({type}, function (err, doc) {
     if (!err) {
-      console.log(doc)
       return res.json({code: 0, data: doc})
     } else {
       console.log(err)
